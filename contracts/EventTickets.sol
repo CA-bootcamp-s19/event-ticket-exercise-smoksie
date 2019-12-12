@@ -48,7 +48,7 @@ contract EventTickets {
         Create a modifier that throws an error if the msg.sender is not the owner.
     */
     modifier onlyOwner() {
-        require(owner == msg.sender, 'Check transaction owner.');
+        require(owner == msg.sender, 'Check owner.');
         _;
     }
 
