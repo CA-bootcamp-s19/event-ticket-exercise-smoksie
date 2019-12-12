@@ -122,7 +122,7 @@ contract EventTickets {
     {
         require(myEvent.isOpen, 'Event is not open.');
         require(msg.value >= (TICKET_PRICE*_ticketsPurchased), 'Not enough ether sent.');
-        require((myEvent.totalTickets - myEvent.sales) >= _ticketsPurchased, 'Not enough tickets');
+        require((myEvent.totalTickets - myEvent.sales) >= _ticketsPurchased, 'Not enough tickets.');
 
         myEvent.buyers[msg.sender] += _ticketsPurchased;
         myEvent.sales += _ticketsPurchased;
@@ -145,7 +145,7 @@ contract EventTickets {
             payable
         {
             uint purchasedTickets = myEvent.buyers[msg.sender];
-            require(purchasedTickets > 0, 'Check if you purchased tickets.');
+            require(purchasedTickets > 0, 'No purchased tickets.');
             myEvent.sales -= purchasedTickets;
             msg.sender.transfer(purchasedTickets * TICKET_PRICE);
             emit LogGetRefund(msg.sender, purchasedTickets);

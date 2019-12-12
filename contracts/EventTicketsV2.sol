@@ -137,7 +137,7 @@ contract EventTicketsV2 {
     {
         require(events[_eventID].isOpen, 'Event sales not open.');
         require(msg.value >= (PRICE_TICKET * _ticketsPurchased), 'Not enough money.');
-        require((events[_eventID].totalTickets - events[_eventID].sales) >= _ticketsPurchased, 'Not enough tickets left');
+        require((events[_eventID].totalTickets - events[_eventID].sales) >= _ticketsPurchased, 'Not enough tickets left.');
 
         events[_eventID].sales += _ticketsPurchased;
         events[_eventID].buyers[msg.sender] += _ticketsPurchased;
